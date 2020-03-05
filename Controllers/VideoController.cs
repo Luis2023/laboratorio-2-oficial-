@@ -15,8 +15,10 @@ namespace MVCLaboratorio.Controllers
         //
         // GET: /Video/
 
-        public ActionResult Index()
-        {
+        public ActionResult VerVideo()
+        {//Consultar videos de la BD 
+            ViewData["video"] = BaseHelper.ejecutarConsulta(
+                "SELECT * FROM video", CommandType.Text);
             return View();
         }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,12 +42,15 @@ namespace MVCLaboratorio.Controllers
             parametros.Add(new SqlParameter("@repro", repro));
             parametros.Add(new SqlParameter("@url", url));
 
-            BaseHelper.ejecutarSentencia("sp_video_insertar", CommandType.StoredProcedure,parametros);
+            BaseHelper.ejecutarSentencia("sp_video_Create", CommandType.StoredProcedure,parametros);
 
-            return RedirectToAction("Index", "Home");
+            return View("VideoAgregado");
         }
 
-        
+        public ActionResult VideoAgregado()
+        {
+            return View();
+        }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public ActionResult Delete()
         {
@@ -54,6 +59,14 @@ namespace MVCLaboratorio.Controllers
 
         [HttpPost]
         public ActionResult Delete(int idVideo)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idVideo", idVideo));
+            BaseHelper.ejecutarSentencia("sp_video_Delete", CommandType.StoredProcedure,parametros);
+
+            return View("VideoEliminado");
+        }
+        public ActionResult VideoEliminado()
         {
             return View();
         }

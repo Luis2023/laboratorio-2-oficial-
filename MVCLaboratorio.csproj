@@ -79,9 +79,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Video\Create.aspx" />
-    <Content Include="Views\Video\Index.aspx" />
+    <Content Include="Views\Video\Delete.aspx" />
     <Content Include="Views\Video\TuVideoHaSidoSubido.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Video\VerVideo.aspx" />
+    <Content Include="Views\Video\VideoAgregado.aspx" />
+    <Content Include="Views\Video\VideoEliminado.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

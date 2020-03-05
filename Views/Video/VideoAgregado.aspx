@@ -4,12 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>Index</title>
+    <title>VideoAgregado</title>
 </head>
 <body>
-    <div>
-    <h1>Tu video se subio :D</h1>
-
-    </div>
+        <h1>Tuvideo ha sido Agregado</h1>
+    <h4>para regresar al menu pulsa aqui <a href="/Home/Index">aqui</a></h4>
 </body>
 </html>

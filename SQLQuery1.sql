@@ -1,11 +1,12 @@
+//--------------------------------------------------------------------Creacion de tabla
 Create table video (
 idVideo int primary key,
 titulo varchar (100),
 repro int,
 url varchar (100)
 );
-
-CREATE PROCEDURE sp_video_insertar
+//--------------------------------------------------------------------Creacion de SP para insertar videos
+CREATE PROCEDURE sp_video_Create
 @idVideo int,
 @titulo varchar (100),
 @repro int,
@@ -13,9 +14,33 @@ CREATE PROCEDURE sp_video_insertar
 AS
 BEGIN
   iNSERT INTO video VALUES (@idVideo, @titulo, @repro,@url)
-
 END 
 
-EXEC sp_video_insertar 1,'yo',123412,'HolaMundo.com'
+//--------------------------------------------------------------------SP de editar en proceso
+CREATE PROCEDURE sp_video_editar
+@idVideo int,
+@titulo varchar (100),
+@repro int,
+@url varchar (100)
+AS 
+BEGIN
+UPDATE video
+SET idVideo=@idVideo,
+idVideo=@idVideo,
+titulo=@titulo,
+repro=@repro,
+url=@url
+WHERE idvideo=@idVideo;
+END
+//--------------------------------------------------------------------Creacion del SP para elominar videos
+CREATE PROCEDURE sp_video_Delete
+@idVideo int
+AS 
+BEGIN
+DELETE from video where idVideo=@idVideo
+END
 
+//--------------------------------------------------------------------Comandos
+Drop table video;
+DELETE from video where idVideo=1;
 select * from video

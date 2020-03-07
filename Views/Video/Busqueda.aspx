@@ -4,10 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
-    <title>VideoAgregado</title>
+    <title>Busqueda</title>
 </head>
 <body>
-        <h1>Tu video ha sido Agregado</h1>
-    <h4>para regresar al menu pulsa aqui <a href="/Home/Index">aqui</a></h4>
+    <h1>Videos Relacionados</h1>
+   
 </body>
 </html>

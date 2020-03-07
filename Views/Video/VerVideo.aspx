@@ -13,6 +13,17 @@
     Hay <%: ((System.Data.DataTable)ViewData["video"]).Rows.Count %> videos
     <hr />
 
+    <form action="/Video/VerVideo" method="post">
+    <legend>Buscar videos</legend>
+    <fieldset>
+    <label for="titulo">Buscar Video</label>
+    <input type="text" name="titulo" />
+        <hr />
+    <input type="submit" value="Buscar video" />
+   
+        <br />
+
+    </fieldset>
     <%
         foreach (System.Data.DataRow video in ((System.Data.DataTable)ViewData["video"]).Rows)
         {  %> 

@@ -21,10 +21,29 @@ namespace MVCLaboratorio.Controllers
                 "SELECT * FROM video", CommandType.Text);
             return View();
         }
+        [HttpPost]
+        public ActionResult VerVideo(string titulo)
+    {
+        List<SqlParameter> parametros = new List<SqlParameter>();
+        parametros.Add(new SqlParameter("@titulo", titulo));
+
+        BaseHelper.ejecutarSentencia("sp_video_Buscar", CommandType.StoredProcedure, parametros);
+
+        return View("Busqueda");
+    }
+        public ActionResult Busqueda()
+        {//Consultar videos de la BD 
+            ViewData["video"] = BaseHelper.ejecutarConsulta(
+                   "select * from video Where titulo Like '%@titulo%' ", CommandType.Text);
+            return View();
+        }
+        
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         public ActionResult Create()
         {
+            ViewData["video"] = BaseHelper.ejecutarConsulta(
+                   "SELECT * FROM video", CommandType.Text);
             return View();
         }
 
@@ -81,6 +100,19 @@ namespace MVCLaboratorio.Controllers
                                    string titulo,
                                    int repro,
                                    string url)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@idVideo",idVideo));
+            parametros.Add(new SqlParameter("@titulo", titulo));
+            parametros.Add(new SqlParameter("@repro", repro));
+            parametros.Add(new SqlParameter("@url", url));
+
+            BaseHelper.ejecutarSentencia("sp_video_editar", CommandType.StoredProcedure,parametros);
+
+            return View();
+        }
+
+        public ActionResult VideoModificado()
         {
             return View();
         }

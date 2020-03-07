@@ -13,11 +13,19 @@
 </head>
 <body>
     <h1>quieres agregar un video¡?</h1>
+    <h4>Cometiste un error¿?, para regresar al menu principal pulsa <a href="/Home/Index">aqui</a></h4>
+    
     <form action="/Video/Create" method="post">
     <fieldset>
+        
+        <hr />
+<p style="color:#CC66FF";>asegurate de que  el Numero de video que pongas sea mayor al numero mostrado aqui 
+    "<%: ((System.Data.DataTable)ViewData["video"]).Rows.Count %>"</p>
+        <hr />
+        
     <legend>Pon los datos aqui :D</legend>
 
-        <label for="idVideo">identificador de video</label>
+        <label for="idVideo">Numero de video</label>
         <input type="text" name="idVideo" />
 
         <label for="titulo">Titulo</label>

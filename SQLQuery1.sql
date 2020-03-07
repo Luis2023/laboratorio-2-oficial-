@@ -26,11 +26,10 @@ AS
 BEGIN
 UPDATE video
 SET idVideo=@idVideo,
-idVideo=@idVideo,
 titulo=@titulo,
 repro=@repro,
 url=@url
-WHERE idvideo=@idVideo;
+WHERE idvideo=@idVideo
 END
 //--------------------------------------------------------------------Creacion del SP para elominar videos
 CREATE PROCEDURE sp_video_Delete
@@ -44,3 +43,12 @@ END
 Drop table video;
 DELETE from video where idVideo=1;
 select * from video
+
+CREATE PROCEDURE C
+@titulo varchar (100)
+AS 
+BEGIN
+select * from video
+Where titulo Like '%@titulo%'
+END
+EXEC PROCEDURE sp_video_Buscar 'shrek'

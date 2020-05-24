@@ -8,6 +8,20 @@
 </head>
 <body>
     <h1>Videos Relacionados</h1>
-   
+   <%
+   foreach (System.Data.DataRow video in ((System.Data.DataTable)ViewData["video"]).Rows)
+        {  
+       %> 
+        
+                        <p>  <%: video["titulo"].ToString()%>
+                            <br />
+                 idVideo= [<%:video ["idVideo"].ToString()%>] </p>
+                                   
+                        <iframe width="560" height="315" src="<%: video["url"].ToString() %>"
+                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        
+        <%
+        }
+        %>
 </body>
 </html>

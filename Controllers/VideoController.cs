@@ -29,13 +29,26 @@ namespace MVCLaboratorio.Controllers
 
         BaseHelper.ejecutarSentencia("sp_video_Buscar", CommandType.StoredProcedure, parametros);
 
-        return View("Busqueda");
+        return RedirectToAction ("Busqueda","Video");
     }
-        public ActionResult Busqueda()
-        {//Consultar videos de la BD 
-            ViewData["video"] = BaseHelper.ejecutarConsulta(
-                   "select * from video Where titulo Like '%@titulo%' ", CommandType.Text);
-            return View();
+
+       
+        //public ActionResult Busqueda()
+       // {//Consultar videos de la BD 
+            //ViewData["video"] = BaseHelper.ejecutarSentencia(
+                 //  "select * from video Where titulo Like '%@titulo%' ", CommandType.Text,);
+
+           // return View();
+       // }
+
+        public ActionResult Busqueda(string titulo)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@titulo", titulo));
+
+            BaseHelper.ejecutarSentencia("sp_video_Buscar", CommandType.StoredProcedure, parametros);
+
+            return RedirectToAction("Busqueda", "Video");
         }
         
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

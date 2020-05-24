@@ -20,6 +20,7 @@
     <input type="text" name="titulo" />
         <hr />
     <input type="submit" value="Buscar video" />
+    </form>
    
         <br />
 
